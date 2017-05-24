@@ -24,6 +24,8 @@ Recipes.create(
   'boiled white rice', ['1 cup white rice', '2 cups water', 'pinch of salt']);
 Recipes.create(
   'milkshake', ['2 tbsp cocoa', '2 cups vanilla ice cream', '1 cup milk']);
+Recipes.create(
+  'Human', ['1 full mommy', '1 full daddy', 'half a cup of love', 'extra room in the house']);
 
 // when the root of this router is called with GET, return
 // all current ShoppingList items
@@ -50,6 +52,12 @@ app.post('/shopping-list', jsonParser, (req, res) => {
 app.delete('/shopping-list/:id', (req, res) => {
   ShoppingList.delete(req.params.id);
   console.log(`Deleted shopping list item \`${req.params.id}\``);
+  res.status(204).end();
+});
+
+app.delete('/recipes/:id', (req, res) => {
+  Recipes.delete(req.params.id);
+  console.log(`Deleted recipe \`${req.param.id}\``);
   res.status(204).end();
 });
 
